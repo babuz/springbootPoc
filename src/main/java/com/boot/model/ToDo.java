@@ -1,25 +1,34 @@
 package com.boot.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
 /**
  * Created by Babu_2 on 04-07-2017.
  */
-public class ToDo {
-    private String id;
+@Entity
+public class ToDo implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String description;
     private boolean isDone;
 
     public  ToDo(){ }
-    public ToDo(String id, String description, boolean isDone) {
-        this.id = id;
+    public ToDo(Long id, String description, boolean isDone) {
+            this.id = id;
         this.description = description;
         this.isDone = isDone;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
